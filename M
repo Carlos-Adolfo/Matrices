@@ -1,1 +1,55 @@
+const NF: usize = 100;
+const NC: usize = 100;
 
+struct Matriz {
+filas: usize,
+columnas: usize,
+celda: [[u64; NC]; NF],
+}
+
+impl Matriz {
+ fn new(filas: usize, columnas: usize) -> Matriz {
+   Matriz {
+    filas,
+    columnas,
+    celda: [[0; NC]; NF],
+    }
+    }
+
+fn añadir(&mut self, f: usize, c: usize, valor: u64) {
+self.celda[f][c] = valor;
+}
+fn promedio(&self) -> u64 {
+let mut suma = 0;
+let mut contador = 0;
+  for i in 0..self.filas {
+     for j in 0..self.columnas {
+     suma = suma + self.celda[i][j];
+     contador = contador + 1;
+     }
+ }
+suma / contador
+    }
+    fn mayor(&self) -> u64 {
+   let mut mayor = self.celda[0][0]; 
+   for i in 0..self.filas {
+    for j in 0..self.columnas {
+    if self.celda[i][j] > mayor {
+    mayor = self.celda[i][j];
+   }
+   }
+   }
+   mayor
+    }
+}
+fn main() {
+let mut m = Matriz::new(3, 3);
+
+
+    m.añadir(0, 0, 5);     m.añadir(0, 1, 1);      m.añadir(0, 2, 2);
+    m.añadir(1, 0, 3);     m.añadir(1, 1, 4);       m.añadir(1, 2, 6);
+    m.añadir(2, 0, 7);     m.añadir(2, 1, 4);      m.añadir(2, 2, 9);
+
+    println!("Promedio: {}", m.promedio());
+    println!("Mayor: {}", m.mayor());
+}
