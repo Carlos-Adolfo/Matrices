@@ -65,16 +65,41 @@ for i in 1..self.filas{
 contador2 = 0;
 for j in 0..self.columnas{
 if self.celda[i][j] % 2 == 0{
-contado2 += 1;
+contador2 += 1;
 }
 }
 if contador2 > contador1 {
 contador1 = contador2;
+fila = i;
+}
+}
+fila
+}
 
+
+
+fn columna_mayor_suma(&self) -> usize {
+let mut suma1 = 0;
+let mut suma2= 0;
+let mut columna = 1;
+for i in 0..self.filas{
+suma1 = suma1 + self.celda[i][0];
+}
+for j in 1..self.columnas{
+suma2 = 0;
+for i in 0..self.filas{
+suma2 = suma2 + self.celda[i][j];
+}
+if suma2 > suma1 {
+suma1 = suma2;
+columna = j;
 }
 }
-contador1
+columna
 }
+
+
+
 
 
 
